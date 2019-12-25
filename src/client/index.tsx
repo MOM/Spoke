@@ -2,11 +2,11 @@
 import "react-hot-loader";
 import "babel-polyfill";
 
-import React from "react";
-import ReactDOM from "react-dom";
-import Form from "react-formal";
-import { StyleSheet } from "aphrodite";
-import injectTapEventPlugin from "react-tap-event-plugin";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+const Form = require("react-formal");
+const { StyleSheet } = require("aphrodite");
+import * as injectTapEventPlugin from "react-tap-event-plugin";
 
 import App from "./App";
 import { login, logout } from "./auth-service";
@@ -17,12 +17,12 @@ import GSScriptOptionsField from "../components//forms/GSScriptOptionsField";
 import GSSelectField from "../components//forms/GSSelectField";
 import GSPasswordField from "../components//forms/GSPasswordField";
 
-window.AuthService = {
+(window as any).AuthService = {
   login,
   logout
 };
 
-StyleSheet.rehydrate(window.RENDERED_CLASS_NAMES);
+StyleSheet.rehydrate((window as any).RENDERED_CLASS_NAMES);
 
 Form.addInputTypes({
   string: GSTextField,

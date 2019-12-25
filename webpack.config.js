@@ -32,19 +32,17 @@ const productionPlugins = [
 module.exports = {
   context: path.resolve(__dirname, "src"),
   entry: {
-    bundle: "./client/index.jsx"
+    bundle: "./client/index.tsx"
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(t|j)sx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        use: [{ loader: "awesome-typescript-loader" }]
       },
       {
         test: /\.css$/,
